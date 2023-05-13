@@ -1,0 +1,16 @@
+
+// In your views/index.ejs file
+<h1>Books</h1>
+<a href="/books/new">Add Book</a>
+<ul>
+<% books.forEach(book => { %>
+    <li>
+        <%= book.title %> by <%= book.author %>
+        <a href="/books/<%= book.id %>/edit">Edit</a>
+        <form action="/books/<%= book.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+<% }) %>
+</ul>
